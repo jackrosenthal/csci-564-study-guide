@@ -5,7 +5,7 @@ DEPENDS=basic-pipeline.png
 all: $(NAME).pdf $(NAME).html
 
 $(NAME).html: $(NAME).rst $(DEPENDS)
-	rst2html --math-output "MathJax https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js" $< > $@
+	rst2html --math-output "MathJax https://mastergo.mines.edu/common/mathjax/mathjax.js" $< > $@
 
 $(NAME).pdf: $(NAME).tex
 	xelatex $<
