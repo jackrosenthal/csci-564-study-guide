@@ -100,6 +100,19 @@ Designing an efficient pipeline
 .. image:: basic-pipeline.png
    :width: 380pt
 
+Hazards
+~~~~~~~
+
+:Structural Hazard:
+    An instruction in the pipeline needs a resource being used by another
+    instruction in the pipeline
+:Data Hazard:
+    An instruction in the pipeline depends on the data value produced by an
+    earlier instruction.
+:Control Hazard:
+    Whether an instruction should be executed depends on a decision made by an
+    earlier instruction.
+
 Amdahl's Law
 ------------
 
@@ -157,10 +170,45 @@ Amdahl's law for latency:
 Data Dependence
 ---------------
 
+Flow Dependence
+~~~~~~~~~~~~~~~
+
+Read after write
+
+.. parsed-literal::
+
+    `r_3 \gets r_1` op `r_2`
+    `r_5 \gets r_3` op `r_4`
+
+Anti Dependence
+~~~~~~~~~~~~~~~
+
+Write after read
+
+.. parsed-literal::
+
+    `r_3 \gets r_1` op `r_2`
+    `r_1 \gets r_4` op `r_5`
+
+Output Dependence
+~~~~~~~~~~~~~~~~~
+
+Write after write
+
+.. parsed-literal::
+
+    `r_3 \gets r_1` op `r_2`
+    `r_5 \gets r_3` op `r_5`
+    `r_3 \gets r_6` op `r_7`
+
 Bypassing
 ---------
 
-What kind of hazard does it solve?
+:Bypassing: Adding circuits and multiplexers to pass data back in the pipeline.
+
+.. admonition:: What kind of hazard does bypassing solve?
+
+    Data hazard, since we are passing data back to where it is needed.
 
 Other Stuff
 -----------
